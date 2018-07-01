@@ -1,21 +1,29 @@
 body {
     background-color: lightblue;
-    margin: 10px;
+    margin: 20px;
     height: auto;
     text-align: center;
     font: helvetia;
 }
 
+#form-element {
+    margin-top:20px;
+}
+
 #search{
-    width: 400px;
+    width: 250px;
+    border: 1px black solid;    
+}
+
+#search, button {
     margin-right: 10px;
 }
 
-
 #list-element {
-    width: 500px;
+    width: 600px;
     height: auto;    
     margin: 40px auto; 
+
 }
 
 #item {
@@ -25,6 +33,11 @@ body {
 }
 
 input[type='text'] {
-    border-radius: 10px;
+    border-radius: 5px;
     outline: none;
+    padding-left: 5px;
+}
+
+a:hover {
+    cursor: pointer;
 }

@@ -14,6 +14,7 @@ class App extends Component {
     
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(e) {
@@ -21,6 +22,12 @@ class App extends Component {
       input: e.target.value
     })
   }
+
+  wikiLink(article) {
+    let  url = `https://en.wikipedia.org/wiki/${article}`
+    window.open(url);
+  }
+
 
   handleSubmit(e) {
     let url = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${this.state.input}&format=json&origin=*`;
@@ -37,22 +44,28 @@ class App extends Component {
   )
  }
 
-  render() {
+ handleClick(e) {
+    let  url = `https://en.wikipedia.org/wiki/Special:Random`
+    window.open(url);
+ }
+
+ render() {
     let result = (this.state.array.length === 0) 
                  ? null
-                 : <Result resultArray = {this.state.array} />
+                 : <Result resultArray = {this.state.array} onCheck = {this.wikiLink}/>
 
     return (
       <div className='container'>
+        <h1>Wikipedia Viewer</h1>
           <div id='form-element'>
-            <form>
-                <input type='text' id = 'search' onChange={this.handleChange} />
-                <button type='submit' onClick={this.handleSubmit}>Submit</button>             
+            <form id='form-input'>
+                <input type='text' id = 'search' onChange={this.handleChange} autoFocus={true} />
+                <button type="submit" value="Submit" onClick={this.handleSubmit}><i className="fas fa-search"></i></button>            
+                <button type='button' onClick={this.handleClick}><i className="fas fa-random"></i></button>                          
             </form>
           </div>
-          {/* {this.state.array.length > 0 ? (<div>{this.state.array[2]['title']}</div>) : null } */}
           <div id='list-element'>
-            {result}
+               {result}
           </div>
       </div>
     );
