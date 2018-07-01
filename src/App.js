@@ -38,21 +38,22 @@ class App extends Component {
  }
 
   render() {
-    let result;
-
-    if (this.state.array.length === 0) 
-      result = null;
-    else 
-      result = <Result resultArray = {this.state.array} />
+    let result = (this.state.array.length === 0) 
+                 ? null
+                 : <Result resultArray = {this.state.array} />
 
     return (
       <div className='container'>
-          <form className='input-bar'>
-              <input type='text' onChange={this.handleChange} />
-              <button type='submit' onClick={this.handleSubmit}>Submit</button>
-          </form>
+          <div id='form-element'>
+            <form>
+                <input type='text' id = 'search' onChange={this.handleChange} />
+                <button type='submit' onClick={this.handleSubmit}>Submit</button>             
+            </form>
+          </div>
           {/* {this.state.array.length > 0 ? (<div>{this.state.array[2]['title']}</div>) : null } */}
-          <div>{result}</div>
+          <div id='list-element'>
+            {result}
+          </div>
       </div>
     );
   }
